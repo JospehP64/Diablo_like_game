@@ -20,7 +20,7 @@ public class player : MonoBehaviour
         Ray laser = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(laser, out RaycastHit hitThis))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 agent.SetDestination(hitThis.point);
             }
