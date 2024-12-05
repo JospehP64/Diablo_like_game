@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class player : MonoBehaviour
 {
+    [SerializeField] Dialogesystem DialogeSM;
     [SerializeField]int interactDistance;
     NPC RemainingNpc;
     private NavMeshAgent agent;
@@ -27,6 +28,7 @@ public class player : MonoBehaviour
                 agent.stoppingDistance = 0;
                 RemainingNpc.interact(this.transform);
                 RemainingNpc = null;
+                Dialogesystem.UNIQUESYSTEM.interactDialoge();
 
             }
         }
