@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d945c7391392e294f9dc54be7e837fee, type: 3}
   m_Name: SO_dialogos_Object
   m_EditorClassIdentifier: 
+  dialogosNPC1:
+  - 
+  - 
+  - 
+  dialogosNPC2:
+  - 
+  - 
+  - 
+  tiempoEntreLetras: 0

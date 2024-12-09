@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Dialogo_SO")]
 public class SO_dialogos : ScriptableObject
 {
-    [SerializeField] TextEditor[] m_TextEditor;
+    [SerializeField] string[] dialogosNPC1, dialogosNPC2;
     TextAreaAttribute textArea;
+    [SerializeField] int tiempoEntreLetras;
 }

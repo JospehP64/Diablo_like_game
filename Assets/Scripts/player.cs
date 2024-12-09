@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     [SerializeField] Dialogesystem DialogeSM;
     [SerializeField]int interactDistance;
     NPC RemainingNpc;
+    Transform lastNPC;
     private NavMeshAgent agent;
     Camera cam;
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class player : MonoBehaviour
                 agent.stoppingDistance = 0;
                 RemainingNpc.interact(this.transform);
                 RemainingNpc = null;
+                
                 Dialogesystem.UNIQUESYSTEM.interactDialoge();
 
             }
@@ -37,7 +39,7 @@ public class player : MonoBehaviour
         Ray laser = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(laser, out RaycastHit hitThis))
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && Time.timeScale != 0)
             {
                if( hitThis.transform.TryGetComponent(out NPC npcscript))
                 {

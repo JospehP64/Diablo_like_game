@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Dialogesystem : MonoBehaviour
 {
+    bool escribiendoMensaje;
+    [SerializeField]GameObject botonTexto;
     [SerializeField]GameObject PanelDeConversacion;
     //RECUERDA: SIGNLE-TON SE ASEGURA DE QUE ESTA SEA LA UNICA INSTANCIA DEL ESTE SCRIPT Y QUE PUEDAS LLAMAR AL SCRIPT EN CUALQUIER LUGAR. SOLO UNA INSTANCIA PUEDE TENER SINGLE-TON(trono)
     public static Dialogesystem UNIQUESYSTEM;
@@ -22,8 +25,13 @@ public class Dialogesystem : MonoBehaviour
         else //sino, el objeto muere y no recibe el "trono"
         {
             Destroy(this.gameObject);
+            
         }
     }
+    //private IEnumerator EscribirFrase()
+    //{
+    //
+    //}
 
     public void interactDialoge()
     {
@@ -34,9 +42,9 @@ public class Dialogesystem : MonoBehaviour
     {
 
     }
-    public void NextPhrase()
+    public void siguienteFrase()//Para poder ejecutar este método, tiene que ser público para que el botón del diálogo lo ejecute
     {
-
+        
     }
 
     public void FinishDIalogue()
