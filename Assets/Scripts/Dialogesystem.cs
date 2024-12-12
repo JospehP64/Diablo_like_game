@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class Dialogesystem : MonoBehaviour
 {
+    Transform NPCTransformCamera;
     bool escribiendoMensaje;
     [SerializeField]GameObject botonTexto;
     [SerializeField]GameObject PanelDeConversacion;
@@ -35,6 +36,7 @@ public class Dialogesystem : MonoBehaviour
 
     public void interactDialoge()
     {
+       // NPCTransformCamera.SetPositionAndRotation(camerapoint.transform.position, camerapoint.transform.rotation);
         PanelDeConversacion.SetActive(true);
         textoDialogo.SetText("Hola");
     }
