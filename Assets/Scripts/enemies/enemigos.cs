@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class enemigos : MonoBehaviour
 {
+    [SerializeField]float waitSeconds = 2;
     [SerializeField]Transform ruta;
 
     List<Vector3> puntos = new List<Vector3>();
      NavMeshAgent agent;
     Vector3 currentDestination;
+    int IndexCurrentPoint =-1;
 
     private void Awake()
     {
@@ -22,19 +24,36 @@ public class enemigos : MonoBehaviour
     }
 
     // Start is called before the first frame update
+    private void Update()
+    {
+        calcularDestino();
+    }
     void Start()
     {
-        StartCoroutine(esperarruta()); 
+        StartCoroutine(PatroleAndwait()); 
     }
 
      //Update is called once per frame
-    IEnumerator esperarruta()
+    IEnumerator PatroleAndwait()
     {
-    agent.SetDestination(currentDestination);
-        yield return null;
+        while (true)
+        {
+            calcularDestino() ;
+            agent.SetDestination(currentDestination);
+            yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.2f);
+            yield return new WaitForSeconds(Random.RandomRange(2, 5));
+        }
+        
+    
     }
     void calcularDestino()
     {
+        IndexCurrentPoint++;
+        if (IndexCurrentPoint >= puntos.Count)//"count" es lo mismo que "length" en arrays
+        {
+            IndexCurrentPoint = 0;//si me he quedado sin puntos de recorrido, vuelvo al punto 0
+        }
+        currentDestination = puntos[IndexCurrentPoint];
 
     }
 }
