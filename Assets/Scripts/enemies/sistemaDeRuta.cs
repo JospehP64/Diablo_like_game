@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemigos : MonoBehaviour
+public class sistemaDeRuta: MonoBehaviour
 {
+
+    bool sistemaDePatruya;
+
+    [SerializeField] enemy enemigoScript;
     [SerializeField]float waitSeconds = 2;
     [SerializeField]Transform ruta;
 
@@ -13,14 +17,17 @@ public class enemigos : MonoBehaviour
     Vector3 currentDestination;
     int IndexCurrentPoint =-1;
 
+
     private void Awake()
     {
+
         agent = GetComponent<NavMeshAgent>();
         foreach (Transform point in ruta)
         {
             //el enemigo recorre los puntos de su ruta y los añade en su lista
             puntos.Add(point.position);
         }
+        sistemaDePatruya = this;
     }
 
     // Start is called before the first frame update
@@ -30,6 +37,7 @@ public class enemigos : MonoBehaviour
     }
     void Start()
     {
+        
         StartCoroutine(PatroleAndwait()); 
     }
 
@@ -55,5 +63,14 @@ public class enemigos : MonoBehaviour
         }
         currentDestination = puntos[IndexCurrentPoint];
 
+    }
+    private void OnTriggerEnter(Collider Presa)
+    {
+        if (Presa.gameObject.CompareTag("Player"))
+        {
+            StopAllCoroutines();
+            enemigoScript.FightModeActivated(Presa.transform);
+            this.enabled = false;
+        }
     }
 }
