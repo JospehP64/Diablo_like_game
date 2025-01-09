@@ -5,23 +5,25 @@ using UnityEngine.AI;
 
 public class sistemaDeRuta: MonoBehaviour
 {
-
+    [SerializeField]float patrolspeed;
     bool sistemaDePatruya;
-
+    [SerializeField]NavMeshAgent sistemaDePatruyaAgent;
     [SerializeField] enemy enemigoScript;
     [SerializeField]float waitSeconds = 2;
     [SerializeField]Transform ruta;
 
     List<Vector3> puntos = new List<Vector3>();
-     NavMeshAgent agent;
     Vector3 currentDestination;
     int IndexCurrentPoint =-1;
 
-
+    private void OnEnable()
+    {
+        IndexCurrentPoint = -1;
+        sistemaDePatruyaAgent.speed = patrolspeed;
+        StartCoroutine(PatroleAndwait());
+    }
     private void Awake()
     {
-
-        agent = GetComponent<NavMeshAgent>();
         foreach (Transform point in ruta)
         {
             //el enemigo recorre los puntos de su ruta y los añade en su lista
@@ -47,8 +49,8 @@ public class sistemaDeRuta: MonoBehaviour
         while (true)
         {
             calcularDestino() ;
-            agent.SetDestination(currentDestination);
-            yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.2f);
+            sistemaDePatruyaAgent.SetDestination(currentDestination);
+            yield return new WaitUntil(() => !sistemaDePatruyaAgent.pathPending && sistemaDePatruyaAgent.remainingDistance <= 0.2f);
             yield return new WaitForSeconds(Random.RandomRange(2, 5));
         }
         

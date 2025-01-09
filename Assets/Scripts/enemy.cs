@@ -7,7 +7,7 @@ public class enemy : MonoBehaviour
     [SerializeField] Transform target;
     public Transform maintarget;
     public EnemyFightSystem fight;
-    sistemaDeRuta patrol;
+    public sistemaDeRuta patrol;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,16 @@ public class enemy : MonoBehaviour
     }
     public void FightModeActivated(Transform target)
     {
+
         maintarget = target;
         fight.enabled = true;
+
+    }
+     public void PatrolActivated()
+    {
+
+        
+        fight.enabled = false;
+            patrol.enabled = true;
     }
 }

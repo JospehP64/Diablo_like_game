@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyFightSystem : MonoBehaviour
 {
+    [SerializeField] Animator monster_animator;
     [SerializeField]float fightspeed;
-    NavMeshAgent FightAgent;
+    [SerializeField]NavMeshAgent FightAgent;
     [SerializeField] enemy main;
     [SerializeField]float distanciaDeAtaque;
     Vector3 TargetDirection;
@@ -29,9 +30,27 @@ public class EnemyFightSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (main.maintarget != null && FightAgent.CalculatePath(main.maintarget.position, new NavMeshPath()))
+        {
+            FightAgent.SetDestination(main.maintarget.transform.position);
+            if (FightAgent.remainingDistance < distanciaDeAtaque)
+            {
+                monster_animator.SetTrigger("attack");
+            }
+        }
+        else
+        {
+            main.PatrolActivated();
+        }
         
-        TargetDirection = main.maintarget.transform.position - transform.position;
-        FightAgent.SetDestination(main.maintarget.transform.position);
+        
+    }
+    void FocusTarget()
+    {
+        Vector3 attackdrirection = (main.maintarget.transform.position - this.transform.position).normalized;
+        TargetDirection.y = 0;
+        Quaternion TargetRotation = Quaternion.LookRotation(attackdrirection);
+        transform.rotation = TargetRotation;
     }
 
 }
