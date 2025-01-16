@@ -36,4 +36,6 @@ public class cofre : MonoBehaviour
         Cursor.SetCursor(DefaultCursorTexture, Vector2.zero, CursorMode.Auto);
         colorOutline.enabled = false;
     }
+
+    
 }

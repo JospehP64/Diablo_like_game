@@ -15,8 +15,9 @@ public class Enemyvisual : MonoBehaviour
     {
         
     }
-    void AttackAnimation()
+    public void AttackAnimation()
     {
+        AnimationEvent EnemyVisualAttack = new AnimationEvent();
 
     }
 }

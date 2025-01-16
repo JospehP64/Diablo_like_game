@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class player : MonoBehaviour
 {
+    [SerializeField] float vida;
     [SerializeField] Dialogesystem DialogeSM;
     [SerializeField]int interactDistance;
     NPC RemainingNpc;
@@ -55,5 +56,10 @@ public class player : MonoBehaviour
         }
 
         
+    }
+
+    void Ataque()
+    {
+
     }
 }

@@ -33,9 +33,9 @@ public class EnemyFightSystem : MonoBehaviour
         if (main.maintarget != null && FightAgent.CalculatePath(main.maintarget.position, new NavMeshPath()))
         {
             FightAgent.SetDestination(main.maintarget.transform.position);
-            if (FightAgent.remainingDistance < distanciaDeAtaque)
+            if (FightAgent.pathPending && FightAgent.remainingDistance < distanciaDeAtaque)
             {
-                monster_animator.SetTrigger("attack");
+                monster_animator.SetBool("attack", true);
             }
         }
         else
