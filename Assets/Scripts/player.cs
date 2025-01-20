@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class player : MonoBehaviour
 {
+    [SerializeField]float AttackDistance = 2;
+    PlayerAnimationEvents PlayerAnimations;
     [SerializeField] float vida;
     [SerializeField] Dialogesystem DialogeSM;
     [SerializeField]int interactDistance;
@@ -12,9 +14,13 @@ public class player : MonoBehaviour
     Transform lastNPC;
     private NavMeshAgent agent;
     Camera cam;
+
+    public PlayerAnimationEvents PlayerAnimations1 { get => PlayerAnimations; set => PlayerAnimations = value; }
+
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAnimations = FindAnyObjectByType<PlayerAnimationEvents>();
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
     }
@@ -22,6 +28,7 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ataque();
         if (RemainingNpc)
         {
             if (agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
@@ -60,6 +67,13 @@ public class player : MonoBehaviour
 
     void Ataque()
     {
-
+        if (Input.GetMouseButtonDown(1))
+        {
+            PlayerAnimations.JugadorAtacando();
+        }
+        else
+        {
+            PlayerAnimations.JugadorDejaDeAtacar();
+        }
     }
 }

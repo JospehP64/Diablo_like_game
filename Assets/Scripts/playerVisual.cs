@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,5 +25,6 @@ public class playerVisual : MonoBehaviour
     {
         //en función de mi velocidad actual, voy actualizando mi "velocity"
         animator.SetFloat("blen_velocity", agent.velocity.magnitude / agent.speed);
+        
     }
 }
