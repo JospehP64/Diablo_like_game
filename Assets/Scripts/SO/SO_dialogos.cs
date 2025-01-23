@@ -9,4 +9,8 @@ public class SO_dialogos : ScriptableObject
     [SerializeField] string[] dialogosNPC1, dialogosNPC2;
     TextAreaAttribute textArea;
     [SerializeField] int tiempoEntreLetras;
+    public string TieneMision;
+    public bool hasMission;
+
+
 }

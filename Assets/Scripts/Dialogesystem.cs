@@ -51,7 +51,10 @@ public class Dialogesystem : MonoBehaviour
 
     public void FinishDIalogue()
     {
-        PanelDeConversacion.SetActive(true);
+        PanelDeConversacion.SetActive(false);
+        Time.timeScale = 1.0f;
+        StopAllCoroutines();
+        
         
     }
 }

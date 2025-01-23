@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour 
 {
+    //USAR INTERACTUABLE
     Transform NPCcameraPoint;
     TMPro.TextMeshPro textMeshPro;
     Outline colorOutline;
