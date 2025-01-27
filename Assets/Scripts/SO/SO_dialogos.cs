@@ -11,6 +11,7 @@ public class SO_dialogos : ScriptableObject
     [SerializeField] int tiempoEntreLetras;
     public string TieneMision;
     public bool hasMission;
+    [SerializeField] GameObject MissionSo;
 
 
 }
