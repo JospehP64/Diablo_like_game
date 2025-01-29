@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class cofre : MonoBehaviour
 {
+    //
     Outline colorOutline;
     [SerializeField]Texture2D SecondaryCursorTexture;
     [SerializeField]Texture2D DefaultCursorTexture;
