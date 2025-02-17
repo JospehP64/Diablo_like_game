@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class player : MonoBehaviour
 {
+    enemy Enemigos;
     [SerializeField]float AttackDistance = 2;
     PlayerAnimationEvents PlayerAnimations;
     [SerializeField] float vida;
@@ -23,6 +24,7 @@ public class player : MonoBehaviour
         PlayerAnimations = FindAnyObjectByType<PlayerAnimationEvents>();
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
+        Enemigos = FindAnyObjectByType<enemy>();
     }
 
     // Update is called once per frame
@@ -70,6 +72,7 @@ public class player : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             PlayerAnimations.JugadorAtacando();
+            
         }
         else
         {

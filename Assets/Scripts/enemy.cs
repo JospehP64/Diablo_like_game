@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
+    public int vida = 0;
     [SerializeField] Transform target;
     public Transform maintarget;
     public EnemyFightSystem fight;
@@ -11,12 +12,17 @@ public class enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fight.enabled = false;
         patrol.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     public void FightModeActivated(Transform target)
     {
